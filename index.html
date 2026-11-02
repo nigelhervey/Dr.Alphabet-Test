@@ -35,7 +35,14 @@ document.getElementById('replay').addEventListener('click', () => {
     audio.currentTime = 0;
   });
 
-  entranceAudio.onended = () => discoveryAudio.play();
+  
+  entranceAudio.onended = () => {
+    status.textContent = 'First recording finished. Starting second...';
+    discoveryAudio.play().catch(error => {
+      status.textContent = 'Second recording failed: ' + error.message;
+    });
+  };
+
   discoveryAudio.onended = () => invitationAudio.play();
 
   entranceAudio.play();
