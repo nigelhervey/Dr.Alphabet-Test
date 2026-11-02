@@ -21,5 +21,8 @@ model.addEventListener('load',()=>status.textContent='Model loaded. Animation: V
 model.addEventListener('error',e=>{status.textContent='Model failed to load. Open this page through a web server (for example, GitHub Pages), not directly from your files.';console.error(e)});
 document.getElementById('replay').addEventListener('click',()=>{model.pause();model.currentTime=0;model.play()});
 </script>
+<audio id="professor-entrance" src="professor-entrance.mp3" preload="auto"></audio>
+<audio id="professor-discovery" src="professor-discovery.mp3" preload="auto"></audio>
+<audio id="professor-invitation" src="professor-invitation.mp3" preload="auto"></audio>  
 </body>
 </html>
