@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dr. Alphabet — Animation Test</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<style>
+:root{font-family:Nunito,system-ui,sans-serif;color:#344B5C;background:#F7F3ED}body{margin:0;padding:24px;text-align:center}h1{margin:0 0 8px}p{margin:0 auto 16px;max-width:600px}model-viewer{display:block;width:min(100%,720px);height:min(75vh,650px);margin:auto;background:#B7C5D1;border:3px solid #8B6243;border-radius:18px}button{font:700 17px system-ui;padding:12px 22px;margin:14px;border-radius:10px;border:2px solid #8B6243;background:white;cursor:pointer}#status{font-size:14px}
+</style>
+</head>
+<body>
+<h1>Dr. Alphabet: Victory Cheer</h1>
+<p>Drag to rotate the character. Use the button to replay the animation.</p>
+<model-viewer id="professor" src="./professor.glb" alt="Animated 3D model of Dr. Alphabet" camera-controls auto-rotate-delay="0" shadow-intensity="1" environment-image="neutral" animation-name="Victory_Cheer" autoplay></model-viewer>
+<button id="replay">Replay cheer</button>
+<p id="status">Loading model…</p>
+<script>
+const model=document.getElementById('professor');const status=document.getElementById('status');
+model.addEventListener('load',()=>status.textContent='Model loaded. Animation: Victory_Cheer');
+model.addEventListener('error',e=>{status.textContent='Model failed to load. Open this page through a web server (for example, GitHub Pages), not directly from your files.';console.error(e)});
+document.getElementById('replay').addEventListener('click',()=>{model.pause();model.currentTime=0;model.play()});
+</script>
+</body>
+</html>
