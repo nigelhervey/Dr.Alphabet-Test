@@ -25,10 +25,21 @@ document.getElementById('replay').addEventListener('click', () => {
   model.currentTime = 0;
   model.play();
 
+  
   const entranceAudio = document.getElementById('professor-entrance');
-  entranceAudio.pause();
-  entranceAudio.currentTime = 0;
+  const discoveryAudio = document.getElementById('professor-discovery');
+  const invitationAudio = document.getElementById('professor-invitation');
+
+  [entranceAudio, discoveryAudio, invitationAudio].forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+
+  entranceAudio.onended = () => discoveryAudio.play();
+  discoveryAudio.onended = () => invitationAudio.play();
+
   entranceAudio.play();
+
 });
 </script>
 <audio id="professor-entrance" src="professor-entrance.mp3" preload="auto"></audio>
